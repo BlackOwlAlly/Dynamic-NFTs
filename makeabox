@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+import "@openzeppelin/contracts@4.4.2/token/ERC721/extensions/ERC721URlStorage.sol";
+import "@openzeppelin/contracts@4.4.2/utils/Counters.sol";
+
+contract ChicBox is ERC721, ERC721URlStorage {
+
+using Counterts for Counters.Counter;
+
+Counters.Counter private _tokenIdCounter;
+
+string[] IpfsUrl = [
+
+"https://ipfs.io/ipfs/QmRZwSPANxR6rzYzeXPN2X1avCNdg1GxjUmsAGtHgMFGtq?filename=Box%20DAMANA.png",
+"https://ipfs.io/ipfs/Qma499z5bwUMa8ZHhnTJfJgHvZs51gfPLyr5K9jMtmkvTe?filename=bob%20anim..mp4",
+"https://ipfs.io/ipfs/QmQEeqRE1VFJAsaNh1wVCPTt2KiDfga138a7J7Hsmc7hHQ?filename=chic%20token%20BG.png"
+
+];
+
+uint interval;
+uint lastTimeStamp;
+
+ constructor(uint _internal) ERC721("NFTBox", "Box") {
+
+     interval = _interval;
+     lastTimeStamp = block.timestamp;
+
+ }
+
+  
+    }
+}function checkUpkeep(bytes calldata /* checkData */) external view override returns (bool upkeepNeeded, bytes memory /* performData */) {
+        upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
+        // We don't use the checkData in this example. The checkData is defined when the Upkeep was registered.
+    }
+
+    function performUpkeep(bytes calldata /* performData */) external override {
+        //We highly recommend revalidating the upkeep in the performUpkeep function
+        if ((block.timestamp - lastTimeStamp) > interval ) {
+            lastTimeStamp = block.timestamp;
+            makeBox(0);
+            
+    function safeMint(address to) public {
+         uint256 tokenId = _tokenIdCounter.curent();
+        _tokenIdCounter.increment();
+        _safeMint(to, tokenId);
+        _setTokenURl(tokenId, IpfsUrl[0]);
