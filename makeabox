@@ -52,7 +52,7 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
     
     function openingBox(uint256 _tokenId) public {
         if(flowerstage(_tokenId) >= 2) {return;}
-        //dobimo stage in dodamo
+        //dobimo stage in dodam
         uint256 newVal = flowerstage(_tokenId) + 1;
         //shrani nov URL
         string memory newUrl = IpfsUrl[newVal];
