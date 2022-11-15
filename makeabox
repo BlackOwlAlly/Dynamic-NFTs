@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts@4.4.2/token/ERC721/extensions/ERC721URlStorage.sol";
-import "@openzeppelin/contracts@4.4.2/utils/Counters.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URlStorage.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract ChicBox is ERC721, ERC721URlStorage {
 
-using Counterts for Counters.Counter;
+using Counters for Counters.Counter;
 
 Counters.Counter private _tokenIdCounter;
 
@@ -28,21 +28,45 @@ uint lastTimeStamp;
 
  }
 
+
+}
   
-    }
-}function checkUpkeep(bytes calldata /* checkData */) external view override returns (bool upkeepNeeded, bytes memory /* performData */) {
+    
+function checkUpkeep(bytes calldata /* checkData */) external view  returns (bool upkeepNeeded, bytes memory /* performData */) {
         upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
         // We don't use the checkData in this example. The checkData is defined when the Upkeep was registered.
     }
 
-    function performUpkeep(bytes calldata /* performData */) external override {
+    function performUpkeep(bytes calldata /* performData */) external  {
         //We highly recommend revalidating the upkeep in the performUpkeep function
         if ((block.timestamp - lastTimeStamp) > interval ) {
             lastTimeStamp = block.timestamp;
             makeBox(0);
             
     function safeMint(address to) public {
-         uint256 tokenId = _tokenIdCounter.curent();
+         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
-        _setTokenURl(tokenId, IpfsUrl[0]);
+        _setTokenURl(tokenId, IpfsUri[0]);
+    }
+    
+    function openingBox(uint256 _tokenId) public {
+        if(flowerstage(_tokenId) >= 2) {return;}
+        //dobimo stage in dodamo
+        uint256 newVal = flowerstage(_tokenId) + 1;
+        //shrani nov URL
+        string memory newUrl = IpfsUrl[newVal];
+        //updeta Url
+        _setTokenURl(_tokeId, newUri)
+
+    }
+
+    //helper funkcije
+
+    //doloci stage rasti,razvoja
+    function flowerstage(uint256 _tokenId)public view returns (uint256) {
+        string memory _uri = tokenURl(_tokenId);
+    }
+    
+
+    }
