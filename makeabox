@@ -21,17 +21,13 @@ string[] IpfsUrl = [
 uint interval;
 uint lastTimeStamp;
 
- constructor(uint _interval) ERC721("NFTBox", "bBox") {
+ constructor(uint _interval) ERC721("POLYdNFTs", "bNFTs") {
 
      interval = _interval;
      lastTimeStamp = block.timestamp;
-
- }
-
-
+    
 }
   
-    
 function checkUpkeep(bytes calldata /* checkData */) external view  returns (bool upkeepNeeded, bytes memory /* performData */) {
         upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
         // We don't use the checkData in this example. The checkData is defined when the Upkeep was registered.
@@ -41,23 +37,30 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
         //We highly recommend revalidating the upkeep in the performUpkeep function
         if ((block.timestamp - lastTimeStamp) > interval ) {
             lastTimeStamp = block.timestamp;
-            box(0);
+            makebox(0);
+
+                  }
+                }
             
-    //function safeMint(address to) public {
-     //    uint256 tokenId = _tokenIdCounter.current();
-      //  _tokenIdCounter.increment();
-      //  _safeMint(to, tokenId);
-     //   _setTokenURl(tokenId, IpfsUri[0]);
-   // }
+            
+     function safeMint(address to) public {
+        uint256 tokenId = _tokenIdCounter.current();
+      _tokenIdCounter.increment();
+       _safeMint(to, tokenId);
+       _setTokenURl(tokenId, IpfsUri[0]);
+    }
     
-    function Newbox(uint256 _tokenId) public {
+    
+    function makebox(uint256 _tokenId) public {
         if(reward(_tokenId) >= 2) {return;}
         //dobimo stage in dodamo
         uint256 newVal = animBox(_tokenId) + 1;
         //shrani nov URL
         string memory newUrl = IpfsUrl[newVal];
         //updeta Url
-        _setTokenURl(_tokeId, newUri)
+        _setTokenURl(_tokeId, newUri);
+
+
 
     }
 
