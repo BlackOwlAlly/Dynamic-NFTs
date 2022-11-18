@@ -12,9 +12,9 @@ Counters.Counter private _tokenIdCounter;
 
 string[] IpfsUrl = [
 
-"https://ipfs.io/ipfs/QmRZwSPANxR6rzYzeXPN2X1avCNdg1GxjUmsAGtHgMFGtq?filename=Box%20DAMANA.png",
-"https://ipfs.io/ipfs/Qma499z5bwUMa8ZHhnTJfJgHvZs51gfPLyr5K9jMtmkvTe?filename=bob%20anim..mp4",
-"https://ipfs.io/ipfs/QmQEeqRE1VFJAsaNh1wVCPTt2KiDfga138a7J7Hsmc7hHQ?filename=chic%20token%20BG.png"
+"https://ipfs.io/ipfs/Qmbc64sxTZVmbQbeFBifb99hdAMSCRVW8s1GMQvy6FhWb7?filename=box",
+"https://ipfs.io/ipfs/QmQcor1ZxV8o2pACm4cgPmCvgqtePGgcHaJNp5ZxWGR8Zp?filename=animBox",
+"https://ipfs.io/ipfs/QmT4VK4DmfVe9CbS4BnWUyUbMh8WxyuGVGv3JrhLpbNj98?filename=reward"
 
 ];
 
@@ -41,7 +41,7 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
         //We highly recommend revalidating the upkeep in the performUpkeep function
         if ((block.timestamp - lastTimeStamp) > interval ) {
             lastTimeStamp = block.timestamp;
-            makeBox(0);
+            box(0);
             
     //function safeMint(address to) public {
      //    uint256 tokenId = _tokenIdCounter.current();
@@ -50,10 +50,10 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
      //   _setTokenURl(tokenId, IpfsUri[0]);
    // }
     
-    function Box1(uint256 _tokenId) public {
-        if(Box3(_tokenId) >= 2) {return;}
+    function Newbox(uint256 _tokenId) public {
+        if(reward(_tokenId) >= 2) {return;}
         //dobimo stage in dodamo
-        uint256 newVal = makeBox(_tokenId) + 1;
+        uint256 newVal = animBox(_tokenId) + 1;
         //shrani nov URL
         string memory newUrl = IpfsUrl[newVal];
         //updeta Url
@@ -64,7 +64,7 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
     //helper funkcije
 
     //doloci stage rasti,razvoja
-    function makeBox(uint256 _tokenId)public view returns (uint256) {
+    function Newbox(uint256 _tokenId)public view returns (uint256) {
         string memory _uri = tokenURl(_tokenId);
     }
     
