@@ -3,7 +3,7 @@ Create smart contract for boxes
 
 web page : https://blackally666.wixsite.com/chicken-hunt-3d
 
-Every 2 weeks, so after 4 weeks players get the ticket foe new quest!
+Every 2 weeks, so after 4 weeks players get the ticket for new quest!
 So player have to have it now, that can enter on next month competition, tournament, presale, etc.
 Other options is to buy ticket from other on the OpenSea, but will be higher price.
 
