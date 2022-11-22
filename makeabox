@@ -58,7 +58,7 @@ function checkUpkeep(bytes calldata /* checkData */) external view  returns (boo
         //shrani nov URL
         string memory newUrl = IpfsUrl[newVal];
         //updeta Url
-        _setTokenURl(_tokeId, newUri);
+        _setTokenURl(_tokenId, newUri);
 
 
 
